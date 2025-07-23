@@ -1,53 +1,165 @@
-// ===== Footer.jsx =====
-import React from 'react';
+
+import React, { useEffect } from "react";
 import {
   FacebookFilled,
   InstagramFilled,
+  PhoneOutlined,
   WhatsAppOutlined,
-} from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+} from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import {
+  FaHome,
+  FaInfoCircle,
+  FaBoxOpen,
+  FaPhoneAlt,
+  FaPhoneSquareAlt,
+} from "react-icons/fa";
+import { MdEmail, MdLocationPin } from "react-icons/md";
 
 const Footer = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100,
+    });
+  }, []);
+  const menuItems = [
+    { label: "Home", icon: <FaHome />, to: "/" },
+    { label: "About", icon: <FaInfoCircle />, to: "/about" },
+    { label: "Products", icon: <FaBoxOpen />, to: "/products" },
+    { label: "Contact", icon: <FaPhoneAlt />, to: "/contact" },
+  ];
   return (
-    <footer className="bg-[#4f342f] text-white pt-10 pb-6 px-4 md:px-10 lg:px-20">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer
+      className="bg-[#1f1300] text-white px-4 py-10 "
+      data-aos="fade-up"
+    >  
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10  justify-items-center ">
         {/* About */}
-        <div>
-          <h3 className="text-2xl font-bold mb-2">Namdev Narmadeshwar Shivling Arts</h3>
-          <p className="text-sm leading-relaxed">
-            We specialize in original Narmadeshwar Shivling and spiritual art forms,
-            offering hand-crafted divine artifacts that bring peace, energy,
-            and positivity to your surroundings.
-          </p>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <h4 className="text-xl font-semibold mb-3 text-[#ffcc70] flex justify-center">
+            {/* <span className="text-4xl animate-pulse">🕉️</span> */}
+            Namdev Narmadeshwar Shivling Arts
+          </h4>
+          <div className="bg-gray-300 rounded-lg inline-block p-1 mb-2 lg:ml-20 ml-20 ">
+            <img
+              src="/Namdevlogo.png"
+              alt="Namdev Logo"
+              className="h-16 w-auto object-contain"
+            />
+          </div>
+          <div className="space-y-2 mb-4 text-sm text-gray-300 leading-relaxed">
+            Original handcrafted{" "}
+            <span className="text-[#ffcc70] font-semibold italic">
+              Narmadeshwar Shivlings
+            </span>{" "}
+            <br /> &
+            <span className="text-[#ffcc70] font-semibold italic">
+              {" "}
+              spiritual Art{" "}
+            </span>{" "}
+            that bring peace, energy , <br /> and{" "}
+            <span>divine harmony to your space. </span>
+          </div>
         </div>
 
         {/* Quick Links */}
-        <div>
-          <h4 className="text-xl font-semibold mb-2">Quick Links</h4>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/" className="hover:text-gray-300">Home</Link></li>
-            <li><Link to="/about" className="hover:text-gray-300">About Us</Link></li>
-            <li><Link to="/gallery" className="hover:text-gray-300">Gallery</Link></li>
-            <li><Link to="/contact" className="hover:text-gray-300">Contact</Link></li>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <h4 className="text-xl font-semibold mb-3 text-[#ffcc70] flex justify-center">
+            Quick Links
+          </h4>
+          <ul className="space-y-3 text-sm">
+            {menuItems.map((item) => (
+              <li key={item.label}>
+                <Link
+                  to={item.to}
+                  className="flex items-center gap-2 group transition-all duration-300 ease-in-out  text-gray-300   hover:text-[#ffcc70]"
+                >
+                  <span className="text-base transition-transform duration-300 group-hover:scale-125  text-red-600  group-hover:text-[#ffcc70]">
+                    {item.icon}
+                  </span>
+                  <span className="transition-colors duration-200">
+                    {item.label}
+                  </span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* Contact Info */}
-        <div>
-          <h4 className="text-xl font-semibold mb-2">Contact Info</h4>
-          <p className="text-sm">Phone: +91 9876543210</p>
-          <p className="text-sm">WhatsApp: +91 9876543210</p>
-          <div className="flex gap-4 mt-4 text-2xl">
-            <a href="#" className="hover:text-gray-300"><FacebookFilled /></a>
-            <a href="#" className="hover:text-gray-300"><InstagramFilled /></a>
-            <a href="#" className="hover:text-gray-300"><WhatsAppOutlined /></a>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <h4 className="text-xl font-semibold mb-3 text-[#ffcc70] flex justify-center">
+            Our Address
+          </h4>
+
+          <div className="space-y-2 mb-4 text-sm text-gray-300 leading-relaxed">
+            <div className="flex items-start gap-2">
+              <span className="text-red-600 ">
+                <MdLocationPin className="text-2xl" />
+              </span>
+              <span>
+                <span className="text-[#ffcc70] font-semibold italic">
+                  Namdev Narmadeshwar Shivling Arts
+                </span>
+                , <br /> Vill - Bakawan , post - Mardana ,<br /> Teh - Barwaha ,
+                Dist - Khargone , <br /> Madhya Pradesh - 451113
+              </span>
+            </div>
+             {/* Email Section */}
+  <div className="flex items-start gap-2">
+    <span className="text-red-600">
+      <MdEmail className="text-xl" />
+    </span>
+   <a href="mailto:namdevshivlingarts@gmail.com" className="text-gray-300 hover:underline">
+  namdevshivlingarts@gmail.com
+</a>
+
+  </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-600 mt-10 pt-4 text-center text-sm">
-        © {new Date().getFullYear()} Namdev Narmadeshwar Shivling Arts. All rights reserved.
+
+      <div className="flex gap-4 mt-6 justify-center">
+        <a
+          href="tel:+919876543210"
+          aria-label="Call"
+          className="w-12 h-12 flex items-center justify-center text-red-500 bg-white/10 hover:bg-red-500 hover:text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+        >
+          <FaPhoneSquareAlt className="text-2xl" />
+        </a>
+        <a
+          href="#"
+          aria-label="Facebook"
+          className="w-12 h-12 flex items-center justify-center text-blue-500 bg-white/10 hover:bg-blue-600 hover:text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+        >
+          <FacebookFilled className="text-2xl" />
+        </a>
+        <a
+          href="#"
+          aria-label="Instagram"
+          className="w-12 h-12 flex items-center justify-center text-pink-500 bg-white/10 hover:bg-gradient-to-tr from-pink-500 to-rose-500 hover:text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+        >
+          <InstagramFilled className="text-2xl" />
+        </a>
+        <a
+          href="#"
+          aria-label="WhatsApp"
+          className="w-12 h-12 flex items-center justify-center text-green-500 bg-white/10 hover:bg-green-500 hover:text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+        >
+          <WhatsAppOutlined className="text-2xl" />
+        </a>
+      </div>
+
+      <div className="mt-4 border-t border-yellow-800 pt-4 text-center text-sm text-yellow-800">
+        <span className="text-lg"> © </span>
+        {new Date().getFullYear()} Namdev Narmadeshwar Shivling Arts. All rights
+        reserved.
       </div>
     </footer>
   );
