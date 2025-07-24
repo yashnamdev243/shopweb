@@ -26,8 +26,9 @@ const Header = () => {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4 }}
-      className="sticky lg:top-3 top-1 z-50 bg-[#f0d39e] shadow-2xl border-b-2 border-[#ff8c00] lg:rounded-lg rounded-lg px-4 sm:px-8  flex justify-between items-center lg:mx-40 mx-2"
+      className="sticky lg:top-3 top-1 z-50  bg-gradient-to-br from-orange-100 to-yellow-50 shadow-2xl border-b-2 border-[#ff8c00] lg:rounded-lg rounded-lg px-4 sm:px-8  flex justify-between items-center lg:mx-40 mx-2"
     >
+      {/* bg-[#f0d39e] */}
       <div className="m-0 p-0 flex items-center lg:gap-10 gap-4 ">
         <Link
           to="/"
@@ -45,7 +46,7 @@ const Header = () => {
           className="inline-flex items-center gap-2 lg:px-4 lg:py-1 px-2 py-2 text-lg lg:text-lg font-semibold text-[#1f1300] border border-[#ff8c00] rounded-full bg-orange-50 shadow-sm hover:shadow-lg transition"
         >
           <MdCall className="text-[#1f1300] text-xl lg:text-2xl" />
-          <span className="hidden sm:inline">9926642925</span>
+          <span className="hidden sm:inline">9691089549</span>
         </a>
       </div>
 
@@ -80,7 +81,7 @@ const Header = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3 }}
-            className="fixed  top-[70px] right-2 w-2/3 sm:w-1/2 h-screen bg-[#f0d39e] shadow-md p-6 flex flex-col gap-6 z-40 md:hidden rounded-lg"
+            className="fixed  top-[70px] right-2 w-2/3 sm:w-1/2 h-screen bg-gradient-to-br from-orange-100 to-yellow-50 shadow-md p-6 flex flex-col gap-6 z-40 md:hidden rounded-lg"
           >
             {menuItems.map(({ label, icon, to }) => (
               <Link
